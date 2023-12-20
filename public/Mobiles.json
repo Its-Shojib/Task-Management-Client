@@ -1,0 +1,212 @@
+[
+    {
+        "price": 899,
+        "name": "Samsung Galaxy S21",
+        "type": "Flagship",
+        "processor": "Exynos 2100",
+        "memory": 8,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/m6kH8Nm/image.png",
+        "brand": "Samsung"
+    },
+    {
+        "price": 799,
+        "name": "Oppo Find X3 Pro",
+        "type": "Flagship",
+        "processor": "Snapdragon 888",
+        "memory": 12,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/jwZy0ds/image.png",
+        "brand": "Oppo"
+    },
+    {
+        "price": 1099,
+        "name": "iPhone 13 Pro",
+        "type": "Flagship",
+        "processor": "A15 Bionic",
+        "memory": 6,
+        "OS": "iOS 15",
+        "img": "https://i.ibb.co/2S504Z8/image.png",
+        "brand": "Iphone"
+    },
+    {
+        "price": 499,
+        "name": "Realme 8",
+        "type": "Mid-range",
+        "processor": "MediaTek Helio G95",
+        "memory": 6,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/k322YYz/image.png",
+        "brand": "Realme"
+    },
+    {
+        "price": 599,
+        "name": "Vivo V21",
+        "type": "Mid-range",
+        "processor": "MediaTek Dimensity 800U",
+        "memory": 8,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/2SNSdhr/image.png",
+        "brand": "Vivo"
+    },
+    {
+        "price": 449,
+        "name": "Samsung Galaxy A52",
+        "type": "Mid-range",
+        "processor": "Snapdragon 720G",
+        "memory": 6,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/BCWKYVJ/image.png",
+        "brand": "Samsung"
+    },
+    {
+        "price": 349,
+        "name": "Oppo Reno 5",
+        "type": "Mid-range",
+        "processor": "Snapdragon 765G",
+        "memory": 8,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/wznVJhp/image.png",
+        "brand": "Oppo"
+    },
+    {
+        "price": 1199,
+        "name": "iPhone 13 Pro Max",
+        "type": "Flagship",
+        "processor": "A15 Bionic",
+        "memory": 8,
+        "OS": "iOS 15",
+        "img": "https://i.ibb.co/1nY0m9v/image.png",
+        "brand": "Iphone"
+    },
+    {
+        "price": 329,
+        "name": "Realme Narzo 30",
+        "type": "Budget",
+        "processor": "MediaTek Helio G95",
+        "memory": 4,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/VYCqT5W/image.png",
+        "brand": "Realme"
+    },
+    {
+        "price": 279,
+        "name": "Vivo Y20",
+        "type": "Budget",
+        "processor": "Mediatek Helio P35",
+        "memory": 4,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/Wy77vnQ/image.png",
+        "brand": "Vivo"
+    },
+    {
+        "price": 599,
+        "name": "Samsung Galaxy Note 20 Ultra",
+        "type": "Flagship",
+        "processor": "Exynos 990",
+        "memory": 12,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/cwGRPbX/image.png",
+        "brand": "Samsung"
+    },
+    {
+        "price": 389,
+        "name": "Oppo A74",
+        "type": "Mid-range",
+        "processor": "Snapdragon 662",
+        "memory": 6,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/X8ghP2L/image.png",
+        "brand": "Oppo"
+    },
+    {
+        "price": 999,
+        "name": "iPhone 12",
+        "type": "Flagship",
+        "processor": "A14 Bionic",
+        "memory": 6,
+        "OS": "iOS 14",
+        "img": "https://i.ibb.co/nDS4K1x/image.png",
+        "brand": "Iphone"
+    },
+    {
+        "price": 269,
+        "name": "Realme C11",
+        "type": "Budget",
+        "processor": "Mediatek Helio G35",
+        "memory": 2,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/Tc5nMTZ/image.png",
+        "brand": "Realme"
+    },
+    {
+        "price": 349,
+        "name": "Vivo V15 Pro",
+        "type": "Mid-range",
+        "processor": "Snapdragon 675",
+        "memory": 6,
+        "OS": "Android 9",
+        "img": "https://i.ibb.co/8BQ9381/image.png",
+        "brand": "Vivo"
+    },
+    {
+        "price": 449,
+        "name": "Samsung Galaxy M32",
+        "type": "Mid-range",
+        "processor": "Mediatek Helio G80",
+        "memory": 4,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/JBpNNKj/image.png",
+        "brand": "Samsung"
+    },
+    {
+        "price": 369,
+        "name": "Oppo A53s",
+        "type": "Mid-range",
+        "processor": "Mediatek Helio G35",
+        "memory": 4,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/vQ5tFm5/image.png",
+        "brand": "Oppo"
+    },
+    {
+        "price": 1299,
+        "name": "iPhone 13",
+        "type": "Flagship",
+        "processor": "A15 Bionic",
+        "memory": 6,
+        "OS": "iOS 15",
+        "img": "https://i.ibb.co/b5S63jb/image.png",
+        "brand": "Iphone"
+    },
+    {
+        "price": 279,
+        "name": "Realme C25",
+        "type": "Budget",
+        "processor": "Mediatek Helio G70",
+        "memory": 4,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/pzWLbSp/image.png",
+        "brand": "Realme"
+    },
+    {
+        "price": 329,
+        "name": "Vivo Y30",
+        "type": "Mid-range",
+        "processor": "Mediatek Helio P35",
+        "memory": 4,
+        "OS": "Android 10",
+        "img": "https://i.ibb.co/3r5W9xb/image.png",
+        "brand": "Vivo"
+    },
+    {
+        "price": 599,
+        "name": "Samsung Galaxy Z Flip 3",
+        "type": "Foldable",
+        "processor": "Snapdragon 888",
+        "memory": 8,
+        "OS": "Android 11",
+        "img": "https://i.ibb.co/YZSPNmB/image.png",
+        "brand": "Samsung"
+    }
+]
