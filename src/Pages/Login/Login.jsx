@@ -64,7 +64,7 @@ const Login = () => {
     }
 
     return (
-        <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row-reverse justify-center items-center gap-5 px-4 mt-5">
+        <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row-reverse justify-center items-center gap-5 px-4 mt-5 z-10">
             <Helmet>
                 <title>Task Master | Login</title>
             </Helmet>
@@ -110,7 +110,7 @@ const Login = () => {
                 </div>
             </div>
             <div className="">
-                <Lottie className="h-[630px] w-full md:w-10/12 " animationData={animation} loop={false}></Lottie>
+                <Lottie className="h-[630px] w-full md:w-10/12 z-10" animationData={animation} loop={false}></Lottie>
             </div>
         </div>
     );

@@ -5,8 +5,8 @@ const Footer = () => {
         <div className="bg-[#0a081f] text-white mt-10">
             <footer className="footer p-10">
                 <Link>
-                    <img className="w-20" src="/Main Logo.png" alt="" />
-                    <p className="text-xl font-bold">Task Master<br />Spreading trust since 2020</p>
+                    <img className="w-32" src="/Task.png" alt="" />
+                    <p><span className="text-xl font-bold">Task Master</span><br />Spreading trust since 2020</p>
                 </Link>
                 <nav>
                     <header className="footer-title">Services</header>
