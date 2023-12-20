@@ -107,7 +107,7 @@ const Register = () => {
     return (
         <div className="w-full md:w-10/12 mx-auto flex flex-col md:flex-row gap-5 px-2 justify-center items-center mt-5">
             <Helmet>
-                <title>Meal Miracle | Register</title>
+                <title>Task Master | Register</title>
             </Helmet>
             <div className="bg-gray-400 w-full md:w-5/12 text-center p-10 rounded-lg">
                 <h2 className="text-3xl font-bold mb-2">Register Now!</h2>

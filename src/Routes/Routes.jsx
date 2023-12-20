@@ -8,6 +8,7 @@ import Register from "../Pages/Register/Register";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import TaskManagement from "../Pages/Task-Management/TaskManagement";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/task-management',
-            element: <TaskManagement></TaskManagement>
+            element: <PrivateRoutes><TaskManagement></TaskManagement></PrivateRoutes>
         },
         {
             path: '/login',

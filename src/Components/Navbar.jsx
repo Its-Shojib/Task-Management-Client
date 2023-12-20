@@ -16,7 +16,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-[#0a081f]">
+            <div className="navbar fixed top-0 bg-[#0a081f]">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
@@ -28,7 +28,7 @@ const Navbar = () => {
                     </div>
                     <div className="flex justify-center items-center gap-2">
                         <Link><img className="w-16 h-16" src="/Main Logo.png" alt="" /></Link>
-                        <h2 className="text-white text-xl md:text-3xl font-bold">Galaxy Store</h2>
+                        <h2 className="text-white text-xl md:text-3xl font-bold">Task Master</h2>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">

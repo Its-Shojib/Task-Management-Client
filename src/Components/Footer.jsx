@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="footer p-10">
                 <Link>
                     <img className="w-20" src="/Main Logo.png" alt="" />
-                    <p className="text-xl font-bold">Galaxy Store<br />Spreading trust since 2020</p>
+                    <p className="text-xl font-bold">Task Master<br />Spreading trust since 2020</p>
                 </Link>
                 <nav>
                     <header className="footer-title">Services</header>
