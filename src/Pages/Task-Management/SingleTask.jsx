@@ -24,7 +24,6 @@ const SingleTask = ({ task, refetch }) => {
             isDragging: !!monitor.isDragging()
         })
     }))
-    console.log(isDragging);
 
     return (
         <div ref={drag}
@@ -39,7 +38,7 @@ const SingleTask = ({ task, refetch }) => {
     )
 }
 SingleTask.propTypes = {
-    task: PropTypes.ReactNode,
+    task: PropTypes.object,
     tasks: PropTypes.array,
     setTasks: PropTypes.func,
     refetch: PropTypes.func

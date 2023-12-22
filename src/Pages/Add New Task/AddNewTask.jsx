@@ -1,4 +1,4 @@
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useLoadData from "../../Hooks/useLoadData";
@@ -23,7 +23,6 @@ const AddNewTask = () => {
 
         let newTask = { taskName, taskStatus, email, desc, priority, date };
         const taskRes = await axiosPublic.post('/create-task', newTask);
-        // console.log(taskRes.data)
         if (taskRes.data.insertedId) {
             console.log(taskRes.data);
             toast.success('Task Created')
@@ -40,6 +39,7 @@ const AddNewTask = () => {
                     placeholder='Task Name' />
                 <button className='bg-green-800 text-white rounded-md px-4 py-3' type='submit'>Create</button>
             </form>
+            <Toaster />
         </div>
     )
 }

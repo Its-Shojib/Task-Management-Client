@@ -11,6 +11,8 @@ const ListTasks = ({ tasks, setTasks }) => {
     let [completed, setCompleted] = useState([]);
 
 
+    console.log(TaskCollection);
+    
     useEffect(() => {
         const fTodos = TaskCollection?.filter((task) => task.taskStatus === 'todo');
         const fOngoing = TaskCollection?.filter((task) => task.taskStatus === 'ongoing');
@@ -20,9 +22,6 @@ const ListTasks = ({ tasks, setTasks }) => {
         setOngoing(fOngoing);
         setCompleted(fCompleted);
     }, [TaskCollection]);
-    console.log("Todos:", todos);
-    console.log("ongoing:", ongoing);
-    console.log("completed:", completed);
 
     let statuses = ['todo', 'ongoing', 'completed'];
 

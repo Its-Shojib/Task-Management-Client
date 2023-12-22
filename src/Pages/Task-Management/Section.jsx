@@ -34,11 +34,13 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
     }
 
     let addItemToSection = async (id) => {
-        let newStatus = {status}
+        let newStatus = { status }
         let stateChangeRes = await axiosPublic.put(`/change-state/${id}`, newStatus)
-        console.log(stateChangeRes.data);
-        refetch()
-        toast('Task status Changed', { icon: "🤗" });
+        if (stateChangeRes.data.modifiedCount > 0) {
+            refetch()
+            toast('Task status Changed', { icon: "🤗" });
+        }
+
     }
 
     return (
