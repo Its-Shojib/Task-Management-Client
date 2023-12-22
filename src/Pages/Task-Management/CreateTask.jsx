@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
-const notify = () => toast('Here is your toast.');
 
 const CreateTask = ({ tasks, setTasks }) => {
     let [task, setTask] = useState({
