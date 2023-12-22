@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import TaskDashboard from "../Layout/TaskDashboard";
 import TaskManagement from "../Pages/Task-Management/TaskManagement";
 import AddNewTask from "../Pages/Add New Task/AddNewTask";
+import UpdateTask from "../Pages/Task-Management/UpdateTask";
 
 const router = createBrowserRouter([
     {
@@ -38,21 +39,27 @@ const router = createBrowserRouter([
                 path: 'register',
                 element: <Register></Register>
             },
-            {
-                path: '/task-dashboard',
-                element: <PrivateRoutes><TaskDashboard></TaskDashboard></PrivateRoutes>,
-                children:[
-                    {
-                        path:'task-management',
-                        element:<PrivateRoutes><TaskManagement></TaskManagement></PrivateRoutes>
-                    },
-                    {
-                        path:'add-task',
-                        element:<PrivateRoutes><AddNewTask></AddNewTask></PrivateRoutes>
-                    },
-                ]
-            },
+
         ],
+    },
+    {
+        path: '/task-dashboard',
+        element: <PrivateRoutes><TaskDashboard></TaskDashboard></PrivateRoutes>,
+        children: [
+            {
+                path: 'task-management',
+                element: <PrivateRoutes><TaskManagement></TaskManagement></PrivateRoutes>
+            },
+            {
+                path: 'add-task',
+                element: <PrivateRoutes><AddNewTask></AddNewTask></PrivateRoutes>
+            },
+            {
+                path: 'task-management/update-task/:id',
+                element: <PrivateRoutes><UpdateTask></UpdateTask></PrivateRoutes>,
+                loader: (params)=> fetch(`https://task-management-system-server-jade.vercel.app/update-task/${params.id}`)
+            },
+        ]
     },
 ]);
 export default router;

@@ -12,7 +12,7 @@ const ListTasks = ({ tasks, setTasks }) => {
 
 
     console.log(TaskCollection);
-    
+
     useEffect(() => {
         const fTodos = TaskCollection?.filter((task) => task.taskStatus === 'todo');
         const fOngoing = TaskCollection?.filter((task) => task.taskStatus === 'ongoing');
@@ -21,12 +21,13 @@ const ListTasks = ({ tasks, setTasks }) => {
         setTodos(fTodos);
         setOngoing(fOngoing);
         setCompleted(fCompleted);
+
     }, [TaskCollection]);
 
     let statuses = ['todo', 'ongoing', 'completed'];
 
     return (
-        <div className="flex gap-20">
+        <div className="w-full md:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 h-screen pt-10">
             {
                 statuses?.map((status, index) => (
                     <Section

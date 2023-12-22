@@ -1,15 +1,15 @@
 import toast, { Toaster } from "react-hot-toast";
+import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useLoadData from "../../Hooks/useLoadData";
-import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
 
-
-const AddNewTask = () => {
+const UpdateTask = () => {
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
     let { user } = useAuth();
-    let [, refetch] = useLoadData();
+    let myData = useLoaderData();
+    console.log(myData);
 
     let onSubmit = async (data) => {
         let taskName = data?.taskName;
@@ -25,10 +25,10 @@ const AddNewTask = () => {
         if (taskRes.data.insertedId) {
             console.log(taskRes.data);
             toast.success('Task Created')
-            refetch();
             reset();
         }
     }
+
     return (
         <div className="flex pt-5">
             <div className="w-10/12 mx-auto ">
@@ -91,4 +91,4 @@ const AddNewTask = () => {
         </div>
     )
 }
-export default AddNewTask;
+export default UpdateTask;

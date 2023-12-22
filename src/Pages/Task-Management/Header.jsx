@@ -4,7 +4,7 @@ const Header = ({ text, bg, count }) => {
     return (
         <div className={`${bg} flex gap-1 h-12 pl-3 rounded-md uppercase txt-white items-center text-white`}>
             {text}
-            <div>{count}</div>
+            <div className='w-6 rounded-full bg-white text-black text-center'>{count}</div>
         </div>
     )
 }

@@ -24,7 +24,7 @@ const Banner = () => {
                         </span></h1>
                     <p className="text-lg max-w-md font-thin">Organize and manage your task like a boss with Task-Master, a free task management tool packing more capabilities than you can imagine.
                     </p>
-                    <button className="bg-sky-900 shadow-white text-white px-8 py-3 rounded-full text-lg font-bold"><Link to='/task-management'>Let’s Explore</Link></button>
+                    <button className="bg-sky-900 shadow-white text-white px-8 py-3 rounded-full text-lg font-bold"><Link to='/task-dashboard/task-management'>Let’s Explore</Link></button>
                 </div>
                 <div className="">
                     <Lottie className="h-[450px] w-full z-10" animationData={animation} loop={true} />

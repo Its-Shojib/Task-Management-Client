@@ -19,7 +19,7 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
 
 
     let text = 'Todo Task';
-    let bg = 'bg-slate-500';
+    let bg = 'bg-red-500';
     let taskToMap = todos;
 
     if (status === 'ongoing') {
@@ -46,7 +46,7 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
     return (
         <div
             ref={drop}
-            className={`w-64 h-96 overflow-y-scroll rounded-md p-2 ${isOver ? 'bg-slate-200' : ""}`}>
+            className={` h-[500px] overflow-y-scroll rounded-md p-2 ${isOver ? 'bg-slate-200' : ""}`}>
             <Header
                 text={text}
                 bg={bg}

@@ -12,7 +12,7 @@ const TaskManagement = () => {
             <Helmet>
                 <title>Task Master | Dashboard</title>
             </Helmet>
-            <div className="bg-slate-100 h-screen flex flex-col items-center">
+            <div className="bg-slate-100">
                 <ListTasks ></ListTasks>
             </div>
         </DndProvider>
