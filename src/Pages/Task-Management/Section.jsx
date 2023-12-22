@@ -5,7 +5,7 @@ import { useDrop } from 'react-dnd';
 import toast from 'react-hot-toast';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
-const Section = ({ status, tasks, setTasks, todos, onGoing, completed, refetch }) => {
+const Section = ({ status, todos, onGoing, completed, refetch }) => {
 
     let axiosPublic = useAxiosPublic();
 
@@ -44,7 +44,7 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, completed, refetch }
     return (
         <div
             ref={drop}
-            className={`w-64 rounded-md p-2 ${isOver ? 'bg-slate-200' : ""}`}>
+            className={`w-64 h-96 overflow-y-scroll rounded-md p-2 ${isOver ? 'bg-slate-200' : ""}`}>
             <Header
                 text={text}
                 bg={bg}
@@ -61,8 +61,6 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, completed, refetch }
 }
 Section.propTypes = {
     status: PropTypes.string,
-    tasks: PropTypes.array,
-    setTasks: PropTypes.func,
     refetch: PropTypes.func,
     todos: PropTypes.array,
     onGoing: PropTypes.array,
