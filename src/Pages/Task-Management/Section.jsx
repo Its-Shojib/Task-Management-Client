@@ -3,8 +3,11 @@ import Header from './Header';
 import SingleTask from './SingleTask';
 import { useDrop } from 'react-dnd';
 import toast from 'react-hot-toast';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
-const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
+const Section = ({ status, tasks, setTasks, todos, onGoing, completed, refetch }) => {
+
+    let axiosPublic = useAxiosPublic();
 
     const [{ isOver }, drop] = useDrop(() => ({
         accept: "task",
@@ -15,35 +18,27 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
     }))
 
 
-    let text = 'Todo';
+    let text = 'Todo Task';
     let bg = 'bg-slate-500';
     let taskToMap = todos;
 
-    if (status === 'inprogress') {
-        text = 'In Progress';
+    if (status === 'ongoing') {
+        text = 'Ongoing Task';
         bg = 'bg-purple-500';
-        taskToMap = inProgress;
+        taskToMap = onGoing;
     }
-    if (status === 'closed') {
-        text = 'In Progress';
+    if (status === 'completed') {
+        text = 'Completed Task';
         bg = 'bg-green-500';
-        taskToMap = closed;
+        taskToMap = completed;
     }
 
-    let addItemToSection = (id) => {
-        // console.log('Dropped : ', id, status);
-        setTasks(prev => {
-            const mTask = prev.map(t => {
-                if (t.id === id) {
-                    return { ...t, status: status }
-                }
-                return t;
-            })
-
-            localStorage.setItem('tasks', JSON.stringify(mTask));
-            toast('Task status Changed', {icon: "🤗"});
-            return mTask;
-        });
+    let addItemToSection = async (id) => {
+        let newStatus = {status}
+        let stateChangeRes = await axiosPublic.put(`/change-state/${id}`, newStatus)
+        console.log(stateChangeRes.data);
+        refetch()
+        toast('Task status Changed', { icon: "🤗" });
     }
 
     return (
@@ -58,8 +53,7 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
                 taskToMap?.length > 0 && taskToMap?.map((task) => <SingleTask
                     key={task?.id}
                     task={task}
-                    tasks={tasks}
-                    setTasks={setTasks}
+                    refetch={refetch}
                 />)
             }
         </div>
@@ -67,10 +61,11 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
 }
 Section.propTypes = {
     status: PropTypes.string,
-    todos: PropTypes.array,
     tasks: PropTypes.array,
     setTasks: PropTypes.func,
-    inProgress: PropTypes.array,
-    closed: PropTypes.array
+    refetch: PropTypes.func,
+    todos: PropTypes.array,
+    onGoing: PropTypes.array,
+    completed: PropTypes.array
 }
 export default Section;

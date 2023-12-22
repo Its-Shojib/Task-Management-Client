@@ -3,13 +3,13 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useLoadData = () => {
     let axiosPublic = useAxiosPublic();
-    const { data: mobileCollection = [], refetch } = useQuery({
-        queryKey: ['mobileCollection'],
+    const { data: TaskCollection = [], refetch } = useQuery({
+        queryKey: ['task Collection'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/mobiledata');
+            const res = await axiosPublic.get('/load-task');
             return res.data;
         }
     })
-    return [mobileCollection, refetch];
+    return [TaskCollection, refetch];
 }
 export default useLoadData;

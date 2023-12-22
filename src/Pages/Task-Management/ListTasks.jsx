@@ -1,25 +1,31 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import Section from "./Section";
+import useLoadData from "../../Hooks/useLoadData";
 
 const ListTasks = ({ tasks, setTasks }) => {
-    let [todos, setTodos] = useState([]);
-    let [inProgress, setInProgress] = useState([]);
-    let [closed, setClosed] = useState([]);
+    let [TaskCollection, refetch] = useLoadData();
 
-    console.log(tasks);
+    let [todos, setTodos] = useState([]);
+    let [ongoing, setOngoing] = useState([]);
+    let [completed, setCompleted] = useState([]);
+
 
     useEffect(() => {
-        const fTodos = tasks?.filter((task) => task.status === 'todo');
-        const fInProgress = tasks?.filter((task) => task.status === 'inprogress');
-        const fClosed = tasks?.filter((task) => task.status === 'closed');
+        const fTodos = TaskCollection?.filter((task) => task.taskStatus === 'todo');
+        const fOngoing = TaskCollection?.filter((task) => task.taskStatus === 'ongoing');
+        const fCompleted = TaskCollection?.filter((task) => task.taskStatus === 'completed');
 
         setTodos(fTodos);
-        setInProgress(fInProgress);
-        setClosed(fClosed);
-    }, [tasks]);
+        setOngoing(fOngoing);
+        setCompleted(fCompleted);
+    }, [TaskCollection]);
+    console.log("Todos:", todos);
+    console.log("ongoing:", ongoing);
+    console.log("completed:", completed);
 
-    let statuses = ['todo', 'inprogress', 'closed'];
+    let statuses = ['todo', 'ongoing', 'completed'];
+
     return (
         <div className="flex gap-20">
             {
@@ -30,8 +36,9 @@ const ListTasks = ({ tasks, setTasks }) => {
                         tasks={tasks}
                         setTasks={setTasks}
                         todos={todos}
-                        inProgress={inProgress}
-                        closed={closed} />
+                        onGoing={ongoing}
+                        completed={completed}
+                        refetch={refetch} />
                 ))
             }
         </div>

@@ -1,51 +1,45 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import toast from 'react-hot-toast';
+import useAxiosPublic from './../../Hooks/useAxiosPublic';
+import useAuth from '../../Hooks/useAuth';
+import useLoadData from '../../Hooks/useLoadData';
 
-const CreateTask = ({ tasks, setTasks }) => {
-    let [task, setTask] = useState({
-        id: "",
-        name: "",
-        status: "todo",
-    });
-    console.log(task);
-    let handleSubmit = (e) => {
+const CreateTask = () => {
+    const axiosPublic = useAxiosPublic();
+    let { user } = useAuth();
+    let [, refetch] = useLoadData();
+
+    let handleSubmit = async (e) => {
         e.preventDefault();
+        let form = e.target;
+        let taskName = form.taskName.value;
+        let taskStatus = 'todo';
+        let email = user?.email;
+        let desc = '';
+        let priority = 'high';
+        let date = '22-12-2023'
 
-        if (task.name.length < 3) return toast.error('Task must be greater than 2 characters')
-        setTasks((prev) => {
-            const list = [...prev, task];
-            localStorage.setItem('tasks', JSON.stringify(list));
+        if (taskName.length < 3) return toast.error('Task must be greater than 2 characters');
 
-            return list;
-        });
-
-        toast.success('Task Created')
-        setTask({
-            id: "",
-            name: "",
-            status: "todo",
-        })
-
+        let newTask = { taskName, taskStatus, email, desc, priority, date };
+        const taskRes = await axiosPublic.post('/create-task', newTask);
+        // console.log(taskRes.data)
+        if (taskRes.data.insertedId) {
+            console.log(taskRes.data);
+            toast.success('Task Created')
+            refetch();
+        }
     }
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name=""
+                    name="taskName"
                     className='border-2 border-slate-300 bg-slate-100 rounded-md mr-3 h-12 w-64 px-1'
-                    onChange={(e) => setTask({ ...task, id: uuidv4(), name: e.target.value })}
-                    value={task.name}
                     placeholder='Task Name' />
                 <button className='bg-green-800 text-white rounded-md px-4 py-3' type='submit'>Create</button>
             </form>
         </div>
     )
-}
-CreateTask.propTypes = {
-    tasks: PropTypes.array,
-    setTasks: PropTypes.func
 }
 export default CreateTask;
