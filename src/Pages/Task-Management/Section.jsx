@@ -36,7 +36,7 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
         let newStatus = { status }
         let stateChangeRes = await axiosSecure.put(`/change-state/${id}`, newStatus)
         if (stateChangeRes.data.modifiedCount > 0) {
-            refetch()
+            refetch();
             toast(`Task moved to ${status}`, { icon: "🤗" });
         }
 

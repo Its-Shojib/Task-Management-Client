@@ -1,5 +1,4 @@
 import toast from "react-hot-toast";
-import { TiDeleteOutline } from "react-icons/ti";
 import PropTypes from 'prop-types';
 import { useDrag } from "react-dnd";
 import { useNavigate } from "react-router-dom";
@@ -37,12 +36,10 @@ const SingleTask = ({ task, refetch }) => {
                     <p>Desc: {desc}</p>
                     <div className="card-actions justify-end">
                         <button onClick={()=> goto(`/task-dashboard/update-task/${_id}`)} className="btn btn-primary">Update</button>
-                        <button onClick={() => handleRemove(_id)} className="btn btn-warning">Delete</button>
+                        <button onClick={() => handleRemove(_id)} className="btn btn-error">Delete</button>
                     </div>
                 </div>
             </div>
-
-            <button className="absolute bottom-3 right-2"><TiDeleteOutline className="text-2xl" /></button>
         </div>
     )
 }

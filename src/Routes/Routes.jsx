@@ -10,8 +10,8 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivateRoutes from "./PrivateRoutes";
 import TaskDashboard from "../Layout/TaskDashboard";
 import TaskManagement from "../Pages/Task-Management/TaskManagement";
-import AddNewTask from "../Pages/Add New Task/AddNewTask";
 import UpdateTask from "../Pages/Task-Management/UpdateTask";
+import AddNewTask from "../Pages/AddNewTask/AddNewTask";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: 'register',
+                path: '/register',
                 element: <Register></Register>
             },
 

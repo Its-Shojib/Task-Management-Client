@@ -1,22 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-// import useAxiosSecure from "./useAxiosSecure";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useLoadData = () => {
-    // let axiosSecure = useAxiosSecure();
-    let axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
+    const { user } = useAuth();
 
-    
-    let { user } = useAuth();
-    // console.log(user);
     const { data: TaskCollection = [], refetch } = useQuery({
-        queryKey: ['task Collection'],
+        queryKey: ['taskCollection'],
         queryFn: async () => {
+            if (!user) {
+                // Return an empty array if user is not available
+                return [];
+            }
+
             const res = await axiosPublic.get(`/load-task/${user.email}`);
             return res.data;
-        }
-    })
+        },
+        enabled: Boolean(user), // Only enable the query when user is truthy
+    });
+
     return [TaskCollection, refetch];
-}
+};
+
 export default useLoadData;

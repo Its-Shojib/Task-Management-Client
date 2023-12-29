@@ -3,26 +3,41 @@ import PropTypes from 'prop-types';
 import Section from "./Section";
 import useLoadData from "../../Hooks/useLoadData";
 
-const ListTasks = ({ tasks, setTasks }) => {
+
+const ListTasks = () => {
     let [TaskCollection, refetch] = useLoadData();
+
 
     let [todos, setTodos] = useState([]);
     let [ongoing, setOngoing] = useState([]);
     let [completed, setCompleted] = useState([]);
 
 
-    // console.log(TaskCollection);
-
     useEffect(() => {
         const fTodos = TaskCollection?.filter((task) => task.taskStatus === 'todo');
         const fOngoing = TaskCollection?.filter((task) => task.taskStatus === 'ongoing');
         const fCompleted = TaskCollection?.filter((task) => task.taskStatus === 'completed');
+    
+        // Check if the filtered tasks are different before updating state
+        if (!arraysAreEqual(fTodos, todos)) {
+            setTodos(fTodos);
+        }
+    
+        if (!arraysAreEqual(fOngoing, ongoing)) {
+            setOngoing(fOngoing);
+        }
+    
+        if (!arraysAreEqual(fCompleted, completed)) {
+            setCompleted(fCompleted);
+        }
+    }, [TaskCollection, todos, ongoing, completed]);
+    
+    // Helper function to compare arrays
+    function arraysAreEqual(arr1, arr2) {
+        return JSON.stringify(arr1) === JSON.stringify(arr2);
+    }
+    
 
-        setTodos(fTodos);
-        setOngoing(fOngoing);
-        setCompleted(fCompleted);
-
-    }, [TaskCollection]);
 
     let statuses = ['todo', 'ongoing', 'completed'];
 
@@ -33,12 +48,11 @@ const ListTasks = ({ tasks, setTasks }) => {
                     <Section
                         key={index}
                         status={status}
-                        tasks={tasks}
-                        setTasks={setTasks}
                         todos={todos}
                         onGoing={ongoing}
                         completed={completed}
-                        refetch={refetch} />
+                        refetch={refetch}
+                    />
                 ))
             }
         </div>

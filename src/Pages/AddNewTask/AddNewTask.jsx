@@ -1,14 +1,15 @@
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 
 const AddNewTask = () => {
-    let axiosSecure = useAxiosSecure();
+    let axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
     let { user } = useAuth();
-    console.log(user);
+    let goto = useNavigate();
 
     let onSubmit = async (data) => {
         let taskName = data?.taskName;
@@ -19,10 +20,10 @@ const AddNewTask = () => {
         let date = data?.taskDate;
 
         let newTask = { taskName, taskStatus, email, desc, priority, date };
-        console.log(newTask);
-        const taskRes = await axiosSecure.post('/create-task', newTask);
+        const taskRes = await axiosPublic.post('/create-task', newTask);
         if (taskRes.data.insertedId) {
             toast.success('Task Created Successfully', {icon: '😎'})
+            goto('/task-dashboard/task-management');
             reset();
         }
     }
@@ -38,6 +39,7 @@ const AddNewTask = () => {
                             <input
                                 type="text"
                                 label="Name"
+                                placeholder="Insert Task Name"
                                 {...register('taskName', { required: true })}
                                 className="w-full p-3" />
                         </div>
@@ -72,7 +74,8 @@ const AddNewTask = () => {
                             </label>
                             <textarea
                                 {...register('taskDesc', { required: true })}
-                                className="w-full"
+                                className="w-full px-2"
+                                placeholder="Write Task Desc"
                                 cols="40"
                                 rows="10">
                             </textarea>
