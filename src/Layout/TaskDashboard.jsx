@@ -1,16 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome, FaPhone, FaTasks } from "react-icons/fa";
+import { FaHome, FaPhone, FaSignOutAlt, FaTasks } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import { TbListDetails } from "react-icons/tb";
 import { MdAddTask } from "react-icons/md";
 
 
 const TaskDashboard = () => {
-    let { user } = useAuth();
+    let { user, Logout } = useAuth();
 
     return (
         <div className="max-w-screen-2xl mx-auto flex">
-            <div className="w-64 min-h-screen bg-[#172935] text-white">
+            <div className="w-2/6 md:w-64 min-h-screen bg-[#172935] text-white">
                 <div className='text-center my-5'>
                     <img className="w-20 mx-auto" src={user?.photoURL} alt="" />
                     <h1 className='text-3xl font-bold'>Task Master</h1>
@@ -46,6 +46,10 @@ const TaskDashboard = () => {
                             <NavLink className='flex items-center font-bold gap-2'
                                 to='/about-us' >
                                 <TbListDetails />About-Us</NavLink>
+                        </li>
+                        <li >
+                            <NavLink onClick={() => Logout()} className='flex items-center font-bold gap-2'>
+                                <FaSignOutAlt />Logout</NavLink>
                         </li>
                     </ul>
                 </div>

@@ -1,10 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
 import useAuth from "./useAuth";
+// import useAxiosSecure from "./useAxiosSecure";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useLoadData = () => {
+    // let axiosSecure = useAxiosSecure();
     let axiosPublic = useAxiosPublic();
+
+    
     let { user } = useAuth();
+    // console.log(user);
     const { data: TaskCollection = [], refetch } = useQuery({
         queryKey: ['task Collection'],
         queryFn: async () => {

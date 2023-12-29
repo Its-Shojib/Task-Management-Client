@@ -2,17 +2,16 @@ import toast from "react-hot-toast";
 import { TiDeleteOutline } from "react-icons/ti";
 import PropTypes from 'prop-types';
 import { useDrag } from "react-dnd";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const SingleTask = ({ task, refetch }) => {
-    let axiosPublic = useAxiosPublic();
+    let axiosSecure = useAxiosSecure();
     let goto = useNavigate();
-    let { _id, taskName, date, desc } = task;
+    let { _id, taskName, date, desc, priority } = task;
 
     let handleRemove = async (id) => {
-        console.log(id);
-        const res = await axiosPublic.delete(`/delete-task/${id}`);
+        const res = await axiosSecure.delete(`/delete-task/${id}`);
         if (res.data.deletedCount > 0) {
             toast("Task Removed", { icon: "💀" });
             refetch();
@@ -31,18 +30,19 @@ const SingleTask = ({ task, refetch }) => {
         <div ref={drag}
             className={`relative p-3 mt-5 shadow-sm cursor-grab bg-gray-300 ${isDragging ? 'opacity-25' : 'opacity-100'}`}>
             <div className="card bg-neutral text-neutral-content">
-                <div className="card-body items-center text-center">
+                <div className="card-body">
                     <h2 className="card-title">{taskName}</h2>
-                    <p>Description: {desc}</p>
+                    <p>Priority: {priority}</p>
                     <p>Date: {date}</p>
+                    <p>Desc: {desc}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={()=> goto(`update-task/${_id}`)} className="btn btn-primary">Update</button>
+                        <button onClick={()=> goto(`/task-dashboard/update-task/${_id}`)} className="btn btn-primary">Update</button>
                         <button onClick={() => handleRemove(_id)} className="btn btn-warning">Delete</button>
                     </div>
                 </div>
             </div>
 
-            <button  className="absolute bottom-3 right-2"><TiDeleteOutline className="text-2xl" /></button>
+            <button className="absolute bottom-3 right-2"><TiDeleteOutline className="text-2xl" /></button>
         </div>
     )
 }

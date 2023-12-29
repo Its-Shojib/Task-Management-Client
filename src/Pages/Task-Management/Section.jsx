@@ -3,11 +3,10 @@ import Header from './Header';
 import SingleTask from './SingleTask';
 import { useDrop } from 'react-dnd';
 import toast from 'react-hot-toast';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Section = ({ status, todos, onGoing, completed, refetch }) => {
-
-    let axiosPublic = useAxiosPublic();
+    let axiosSecure = useAxiosSecure();
 
     const [{ isOver }, drop] = useDrop(() => ({
         accept: "task",
@@ -35,10 +34,10 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
 
     let addItemToSection = async (id) => {
         let newStatus = { status }
-        let stateChangeRes = await axiosPublic.put(`/change-state/${id}`, newStatus)
+        let stateChangeRes = await axiosSecure.put(`/change-state/${id}`, newStatus)
         if (stateChangeRes.data.modifiedCount > 0) {
             refetch()
-            toast('Task status Changed', { icon: "🤗" });
+            toast(`Task moved to ${status}`, { icon: "🤗" });
         }
 
     }

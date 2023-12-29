@@ -3,24 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMail } from 'react-icons/ai';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { BsFillPersonFill, BsFillFileImageFill } from 'react-icons/bs';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import { updateProfile } from 'firebase/auth'
-
-
-import animation from './../../../src/assets/SignUpAnimation.json'
 import { Helmet } from "react-helmet-async";
-import useAuth from "../../Hooks/useAuth";
+import { AuthContext } from './../../AuthProvider/AuthProvider';
+import useAuth from './../../Hooks/useAuth';
 import { auth } from "../../Firebase/Firebase.config";
-
+import animation from './../../assets/SignUpAnimation.json'
 
 
 const Register = () => {
 
     let [showPassword, setShowPassword] = useState(false);
-    let { user, setUser, createUser, googleSignIn } = useAuth()
+    let { createUser, googleSignIn } = useContext(AuthContext);
+    let { user, setUser } = useAuth()
 
     let navigate = useNavigate()
     let handleCreateUser = (e) => {
@@ -63,7 +62,7 @@ const Register = () => {
                     displayName: myname, photoURL: myphoto
                 })
                     .then(() => {
-                        setUser({ ...user, photoURL: myphoto, displayName: myname });
+                        setUser({ ...user, photoURL: myphoto, displayName: myname, email: email });
                         Swal.fire({
                             title: 'Success!',
                             text: 'User Created Successfully',

@@ -1,12 +1,12 @@
 import toast, { Toaster } from "react-hot-toast";
-import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useLoadData from "../../Hooks/useLoadData";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 
 
 const AddNewTask = () => {
-    const axiosPublic = useAxiosPublic();
+    let axiosSecure = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
     let { user } = useAuth();
     let [, refetch] = useLoadData();
@@ -20,11 +20,9 @@ const AddNewTask = () => {
         let date = data?.taskDate;
 
         let newTask = { taskName, taskStatus, email, desc, priority, date };
-        console.log(newTask);
-        const taskRes = await axiosPublic.post('/create-task', newTask);
+        const taskRes = await axiosSecure.post('/create-task', newTask);
         if (taskRes.data.insertedId) {
-            console.log(taskRes.data);
-            toast.success('Task Created')
+            toast.success('Task Created Successfully', {icon: '😎'})
             refetch();
             reset();
         }

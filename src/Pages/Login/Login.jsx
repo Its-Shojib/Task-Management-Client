@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     let [showPassword, setShowPassword] = useState(false);
-    let { SignInUser, googleSignIn } = useContext(AuthContext)
+    let { SignInUser, googleSignIn } = useContext(AuthContext);
     let navigate = useNavigate()
     let location = useLocation();
 
@@ -26,8 +26,8 @@ const Login = () => {
                 console.log(result.user);
                 e.target.reset();
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'User Login Successfully',
+                    title: 'Login Success!',
+                    text: `Welcome Back!`,
                     icon: 'Success',
                     confirmButtonText: 'Cool'
                 })

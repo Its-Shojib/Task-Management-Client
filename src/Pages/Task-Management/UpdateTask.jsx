@@ -1,31 +1,29 @@
 import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 
 const UpdateTask = () => {
-    const axiosPublic = useAxiosPublic();
+    let goto = useNavigate();
+    let axiosSecure = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
-    let { user } = useAuth();
     let myData = useLoaderData();
-    console.log(myData);
+    let { taskName, priority,_id, date, desc } = myData;
 
     let onSubmit = async (data) => {
         let taskName = data?.taskName;
-        let taskStatus = 'todo';
-        let email = user?.email;
         let desc = data?.taskDesc;
         let priority = data?.taskPriority;
         let date = data?.taskDate;
 
-        let newTask = { taskName, taskStatus, email, desc, priority, date };
-        console.log(newTask);
-        const taskRes = await axiosPublic.post('/create-task', newTask);
-        if (taskRes.data.insertedId) {
-            console.log(taskRes.data);
-            toast.success('Task Created')
+        let updatedTask = { taskName, desc, priority, date };
+        console.log(updatedTask);
+        const updateTaskRes = await axiosSecure.put(`/update-single-task/${_id}`, updatedTask);
+        if (updateTaskRes.data.modifiedCount) {
             reset();
+            goto('/task-dashboard/task-management')
+            toast.success('Task Updated Successfully', {icon: '😎'})
         }
     }
 
@@ -40,6 +38,7 @@ const UpdateTask = () => {
                             </label>
                             <input
                                 type="text"
+                                defaultValue={taskName}
                                 label="Name"
                                 {...register('taskName', { required: true })}
                                 className="w-full p-3" />
@@ -48,8 +47,10 @@ const UpdateTask = () => {
                             <label className="label">
                                 <span className="label-text">Task Date</span>
                             </label>
-                            <input {...register('taskDate', { required: true })}
+                            <input
+                                {...register('taskDate', { required: true })}
                                 type="date"
+                                defaultValue={date}
                                 className=" w-full p-3" />
                         </div>
                     </div>
@@ -59,7 +60,7 @@ const UpdateTask = () => {
                                 <span className="label-text">Priority</span>
                             </label>
 
-                            <select defaultValue="default" {...register('taskPriority', { required: true })}
+                            <select defaultValue={priority} {...register('taskPriority', { required: true })}
                                 className="select select-bordered w-full p-3">
                                 <option disabled value="default">Select Priority</option>
                                 <option value="High">High</option>
@@ -74,6 +75,7 @@ const UpdateTask = () => {
                                 <span className="label-text">Task Descriptions</span>
                             </label>
                             <textarea
+                                defaultValue={desc}
                                 {...register('taskDesc', { required: true })}
                                 className="w-full"
                                 cols="40"
@@ -83,7 +85,7 @@ const UpdateTask = () => {
                     </div>
 
                     <button className="block bg-green-700 p-3 text-lg text-white rounded-lg" type="submit">
-                        Save & Publish Now!
+                        Update Now!
                     </button>
                 </form>
             </div>

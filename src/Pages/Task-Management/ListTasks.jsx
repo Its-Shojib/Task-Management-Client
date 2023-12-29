@@ -11,7 +11,7 @@ const ListTasks = ({ tasks, setTasks }) => {
     let [completed, setCompleted] = useState([]);
 
 
-    console.log(TaskCollection);
+    // console.log(TaskCollection);
 
     useEffect(() => {
         const fTodos = TaskCollection?.filter((task) => task.taskStatus === 'todo');

@@ -55,9 +55,9 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><AddNewTask></AddNewTask></PrivateRoutes>
             },
             {
-                path: 'task-management/update-task/:id',
+                path: '/task-dashboard/update-task/:id',
                 element: <PrivateRoutes><UpdateTask></UpdateTask></PrivateRoutes>,
-                loader: (params)=> fetch(`https://task-management-system-server-jade.vercel.app/update-task/${params.id}`)
+                loader: ({params})=> fetch(`https://task-management-server-pearl-three.vercel.app/update-task/${params.id}`)
             },
         ]
     },
