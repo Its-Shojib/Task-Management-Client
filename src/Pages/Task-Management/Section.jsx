@@ -52,7 +52,7 @@ const Section = ({ status, todos, onGoing, completed, refetch }) => {
                 count={taskToMap?.length} />
             {
                 taskToMap?.length > 0 && taskToMap?.map((task) => <SingleTask
-                    key={task?.id}
+                    key={task?._id}
                     task={task}
                     refetch={refetch}
                 />)

@@ -1,5 +1,4 @@
 import toast, { Toaster } from "react-hot-toast";
-import useLoadData from "../../Hooks/useLoadData";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
@@ -9,7 +8,7 @@ const AddNewTask = () => {
     let axiosSecure = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
     let { user } = useAuth();
-    let [, refetch] = useLoadData();
+    console.log(user);
 
     let onSubmit = async (data) => {
         let taskName = data?.taskName;
@@ -20,10 +19,10 @@ const AddNewTask = () => {
         let date = data?.taskDate;
 
         let newTask = { taskName, taskStatus, email, desc, priority, date };
+        console.log(newTask);
         const taskRes = await axiosSecure.post('/create-task', newTask);
         if (taskRes.data.insertedId) {
             toast.success('Task Created Successfully', {icon: '😎'})
-            refetch();
             reset();
         }
     }

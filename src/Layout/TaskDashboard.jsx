@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaHome, FaPhone, FaSignOutAlt, FaTasks } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import { TbListDetails } from "react-icons/tb";
@@ -7,6 +7,7 @@ import { MdAddTask } from "react-icons/md";
 
 const TaskDashboard = () => {
     let { user, Logout } = useAuth();
+    let goto = useNavigate();
 
     return (
         <div className="max-w-screen-2xl mx-auto flex">
@@ -48,7 +49,7 @@ const TaskDashboard = () => {
                                 <TbListDetails />About-Us</NavLink>
                         </li>
                         <li >
-                            <NavLink onClick={() => Logout()} className='flex items-center font-bold gap-2'>
+                            <NavLink onClick={() => Logout().then(goto('/')).catch( ()=> {})} className='flex items-center font-bold gap-2'>
                                 <FaSignOutAlt />Logout</NavLink>
                         </li>
                     </ul>

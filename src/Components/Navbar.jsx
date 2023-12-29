@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from './../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
     let { user, Logout } = useContext(AuthContext);
 
+    let goto = useNavigate();
     let links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/contact-us'>Contact Us</NavLink></li>
@@ -52,7 +53,7 @@ const Navbar = () => {
                         </>
                     }
                     {
-                        user ? <button onClick={() => Logout().then().catch( ()=> {})} className="bg-red-600 px-2 md:px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-2 md:px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
+                        user ? <button onClick={() => Logout().then(goto('/')).catch( ()=> {})} className="bg-red-600 px-2 md:px-4 py-2 rounded-md font-semibold">Log Out</button> : <button className=" bg-green-600 px-2 md:px-4 py-2 rounded-md font-semibold"><NavLink to='/login'>Login</NavLink></button>
                     }
 
                 </div>
