@@ -10,14 +10,13 @@ const useLoadData = () => {
         queryKey: ['taskCollection'],
         queryFn: async () => {
             if (!user) {
-                // Return an empty array if user is not available
                 return [];
             }
 
             const res = await axiosPublic.get(`/load-task/${user.email}`);
             return res.data;
         },
-        enabled: Boolean(user), // Only enable the query when user is truthy
+        enabled: Boolean(user),
     });
 
     return [TaskCollection, refetch];
