@@ -14,5 +14,6 @@
 * **Delete Task:** user can delete his/her task by delete button on task management page.
 * **Dynamic Login-Logout:** User can login and logout anytime by clicking login or logout... 
 
+
 # Technology Used:
 * **React Js , Node Js, MongoDB, Express Js, Firebase, JSON Web Token, Tailwind**
